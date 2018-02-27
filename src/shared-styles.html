@@ -9,6 +9,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
 
 <!-- shared styles for all views -->
 <dom-module id="shared-styles">
@@ -21,11 +23,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       /*  height:180px; */
         
       }
-      .column {
-    float: left;
-    width: 50%;
-      }
-
       .circle {
         display: inline-block;
         width: 64px;
@@ -46,3 +43,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
   </template>
 </dom-module>
+<dom-module id="shared-flex-grids">
+    <template>
+    <style include="iron-flex iron-flex-alignment">
+         .container {
+         @apply --layout-horizontal;
+         margin-right: 2px;
+         margin-left: 2px;
+         margin-top: 2px;
+         margin-bottom: 2px;
+  }
+  .flexchild {
+    @apply --layout-flex;
+    @apply --layout-vertical;
+    margin-right: 2px;
+    margin-left: 2px;
+   }
+   .imagecontainer
+   {
+    margin-top:2px;
+    margin-bottom:2px
+   }
+     </style> 
+    <template>
+              
+</dom-module>  
