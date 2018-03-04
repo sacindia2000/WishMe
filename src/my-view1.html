@@ -13,6 +13,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-image/iron-image.html">
 
 <link rel="import" href="shared-styles.html">
+<!-- Fire base files -->
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-firestore.js"></script>
+
+<script src="my-firebase.js"></script>
 
 <dom-module id="my-view1">
   <template>
@@ -55,9 +61,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </template>
 
   <script>
+    var collectionname = "wishimages";
+    var datasize = 3;
+    var dataarray = [];
     class MyView1 extends Polymer.Element {
+
       static get is() { return 'my-view1'; }
+      static get properties() {
+    return {
+      user: String,
+      isHappy: Boolean,
+      count: {
+        type: Number,
+        readOnly: true,
+        notify: true
+      }
     }
+    }
+    ready()
+    {
+      super.ready();
+      myfirestore_getdata(collectionname,datasize,dataarray);
+    }
+  }
+  console.log("Printing this"+this.user);
 
     window.customElements.define(MyView1.is, MyView1);
   </script>

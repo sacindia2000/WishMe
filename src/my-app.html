@@ -21,13 +21,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-tabs/paper-tab.html">
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
-
 <link rel="import" href="my-icons.html">
+<!-- Fire base files -->
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-firestore.js"></script>
 
 <link rel="lazy-import" href="my-view1.html">
 <link rel="lazy-import" href="my-view2.html">
 <link rel="lazy-import" href="my-view3.html">
 <link rel="lazy-import" href="my-view404.html">
+
+<script src="my-firebase.js"></script>
 
 <dom-module id="my-app">
   <template>
@@ -111,7 +116,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </app-header-layout>
     
     </app-drawer-layout>
- 
+    
   </template>
 
   <script>
@@ -158,10 +163,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             null,
             this._showPage404.bind(this),
             true);
+
       }
 
       _showPage404() {
         this.page = 'view404';
+      }
+      ready()
+      {
+        super.ready();
+        /** Init firebase **/
+        myfirebase_init();
+        
       }
     }
 
